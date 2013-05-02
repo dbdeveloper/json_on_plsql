@@ -7,7 +7,7 @@
  * which accompanies this distribution, and is available at http://www.gnu.org/licenses/lgpl.html
   
  * **Contributors:**
- *     Vladyslav Kozlovskyy  - dbdeveloper@rambler.ru
+ *     Vladyslav Kozlovskyy  - dbdeveloper at rambler.ru
  
 ******************************************************************************/
 

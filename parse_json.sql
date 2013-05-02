@@ -8,7 +8,7 @@ function parse_json
  * http://www.gnu.org/licenses/lgpl.html
  * 
  * Contributors:
- *     Vladyslav Kozlovskyy  - dbdeveloper@rambler.ru
+ *     Vladyslav Kozlovskyy  - dbdeveloper at rambler.ru
  ******************************************************************************/
 -- PARAMETERS:
 ( I_json_string IN varchar2 )

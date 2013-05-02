@@ -8,7 +8,7 @@ type body PAIR
  * http://www.gnu.org/licenses/lgpl.html
  * 
  * Contributors:
- *     Vladyslav Kozlovskyy  - dbdeveloper@rambler.ru
+ *     Vladyslav Kozlovskyy  - dbdeveloper at rambler.ru
  ******************************************************************************/
 as
   constructor function PAIR( SELF  IN OUT NOCOPY PAIR ) return SELF as RESULT

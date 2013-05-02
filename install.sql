@@ -8,7 +8,7 @@
 -- * http://www.gnu.org/licenses/lgpl.html
 -- * 
 -- * Contributors:
--- *     Vladyslav Kozlovskyy  - dbdeveloper@rambler.ru
+-- *     Vladyslav Kozlovskyy  - dbdeveloper at rambler.ru
 -- ******************************************************************************
 
 @pair_h.sql
