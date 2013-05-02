@@ -22,6 +22,7 @@ See sources and `test.sql` file for details.
 ## REMOVE INSTALLED OBJECTS:
    To remove installed objects execute these commands:
 ```sql
+   DROP FUNCTION CLOB_JSON;
    DROP FUNCTION PARSE_JSON;
    DROP FUNCTION PAIRS_TO_CHAR;
    DROP TYPE PAIRS FORCE;
