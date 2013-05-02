@@ -11,6 +11,23 @@
 COLUMN NAME FORMAT A25
 COLUMN VALUE FORMAT A40
 
+select * from table(parse_json('{ " a " : 1111 , " b " : 2222 , " c " : { " d " : 4444, " e " : 5555} , " f " : 6666 }')); 
+
+prompt ------------------------------------------------------------------------
+
+set serveroutput on
+set linesize 1000
+declare
+  result pairs;
+begin
+  result := parse_json('{ " a " : 1111 , " b " : 2222 , " c " : { " d " : 4444, " e " : 5555} , " f " : 6666 }');
+
+  for i in result.FIRST .. result.LAST loop
+    dbms_output.put_line(result(i).name || ' :' || chr(9) || result(i).value);
+  end loop;
+end;
+/
+
 select * from table(parse_json('{
    "firstName": "Иван",
    "lastName": "Иванов",
@@ -25,7 +42,7 @@ select * from table(parse_json('{
 
 prompt ------------------------------------------------------------------------
 
-set linesize 250
+set linesize 1000
 set serveroutput on
 declare
   res pairs;
@@ -47,6 +64,58 @@ begin
   }');
 
   dbms_output.put_line(pairs_to_char(res));
+end;
+/
+
+
+declare
+  result pairs;
+begin 
+  result := parse_json
+    ( ' /* comment */
+       {/*te*/" a " : [0/*st*/
+                      ,/*testest*/ { ''test'':/*---*/123.00
+                                   , ''yet_another_test'':"test"
+                                   , array: [10,20,30]
+                                   }
+                      , [''yes'',no ]
+                      ]
+       , " b " : 2222 /*yet another comment...*/
+       , " c " : { " d " : 4444
+                 , " e " : 5555
+                 }
+       , " f " : 6666
+       }'
+    );
+
+  for i in result.FIRST .. result.LAST loop
+    dbms_output.put_line('|'||result(i).line(23)||'|');
+  end loop;
+  dbms_output.put_line(rpad('*',40,'*')); 
+  dbms_output.put_line('|'||pairs_to_char(result)||'|');
+end;
+/
+        
+
+declare
+  result pairs;
+begin
+  result := clob_json
+    ( '{
+           "book": {
+               "title": "Hamlet",
+               "author": "William Shakespeare",
+               "quotes": [
+                   "Like Niobe, all tears",
+                   "To be, or not to be",
+                   "All is not well; I doubt some foul play.",
+                   "A countenance more in sorrow than in anger."
+               ]
+           }
+       }'); 
+
+  dbms_output.put_line(rpad('*',40,'*')); 
+  dbms_output.put_line(pairs_to_char(result));
 end;
 /
 
