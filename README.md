@@ -52,11 +52,11 @@ end;
 /
 ```
 
-Result is a pair of name-value, where `Name` is a "path" to get appropriate value.
+Result is a pair of key-value, where `Key` is a "path" to get appropriate value.
 
 For example, for such json:
 
-```json
+```js
 /* comment */
 { " a " : [ 0
           , { 'test': 123.00
