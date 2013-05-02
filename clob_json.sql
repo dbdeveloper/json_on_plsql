@@ -38,8 +38,8 @@ begin
 
   case err_id
     when 1 then
-        return ''''||p1||''' character is detected when expected one of '
-               ||p2||' characters.' || who_called_me;
+        return ''''||p1||''' character is detected when one of '
+               ||p2||' characters is expected.' || who_called_me;
     when 2 then
         return ''''||p1||''' character is detected when '''
                ||p2||''' is expected.' || who_called_me;
@@ -274,7 +274,7 @@ begin
                I_err_msg := fmt_err(1, '{', '''"''|alpha_numeric_characters|''}''');
                exit;
              else -- RIGHT_PART then
-               -- recursive call this program
+               -- recursive call of this program
                parse_obj(I_text, I_pos, I_res, I_res_idx, I_err_msg,
                          case when I_prefix is not NULL
                               then I_prefix || '.'

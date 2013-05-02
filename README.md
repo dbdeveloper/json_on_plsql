@@ -14,7 +14,7 @@
 See sources and `test.sql` file for details.
 
 ## INSTALLATION
-  execute install.sql using sqlplus:
+  Execute install.sql using sqlplus:
 ```shell
   sqlplus  username/userpassword@dbname  @install.sql
 ```
@@ -29,8 +29,8 @@ See sources and `test.sql` file for details.
    DROP TYPE PAIR FORCE;
 ```
 
-## USING:
-   Using is very simple:
+## USAGE:
+   Usage is very simple:
 
 ```sql
     select * from table(parse_json('<json_structure>'));
@@ -53,7 +53,7 @@ end;
 /
 ```
 
-Result is a pair of key-value, where `Key` is a "path" to get appropriate value.
+Result is a set of pairs of key-value, where `Key` is a "path" to get appropriate value.
 
 For example, for such json:
 
@@ -74,7 +74,7 @@ For example, for such json:
 }
 ```
 
-the next result set will be get:
+the next result set will be created:
 
 ```
 NAME                      VALUE
