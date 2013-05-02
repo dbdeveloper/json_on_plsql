@@ -538,4 +538,3 @@ begin
   return res;
 end clob_json;
 /
-/
