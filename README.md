@@ -37,7 +37,7 @@ See sources and `test.sql` file for details.
 
 or
 
-```plsql
+```sql
 set serveroutput on
 set linesize 1000
 declare
