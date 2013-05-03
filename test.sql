@@ -8,6 +8,7 @@
 -- Contributors:
 --     Vladyslav Kozlovskyy  - dbdeveloper at rambler.ru
 --------------------------------------------------------------------------------
+set timing on
 COLUMN NAME FORMAT A25
 COLUMN VALUE FORMAT A40
 
