@@ -21,6 +21,7 @@ is
   L_index     pls_integer;
   L_result    varchar2(32767);
   L_name_size pls_integer := NULL;
+  L_sep       varchar2(32767) := concat(I_sep, rpad(' ', I_indent));
 begin
   L_index := I_pairs.FIRST;
   if L_index is not NULL then
@@ -33,12 +34,11 @@ begin
       L_index := I_pairs.FIRST;
     end if;
     
-    L_result := rpad(' ', I_indent) || I_pairs(L_index).line(L_name_size);
+    L_result := concat(rpad(' ', I_indent), I_pairs(L_index).line(L_name_size));
     L_index := I_pairs.NEXT(L_index);
   
     while L_index is not NULL loop
-       L_result := L_result || I_sep || rpad(' ', I_indent)
-                  || I_pairs(L_index).line(L_name_size);
+       L_result := L_result || L_sep || I_pairs(L_index).line(L_name_size);
        L_index := I_pairs.NEXT(L_index);
     end loop;
   end if;
