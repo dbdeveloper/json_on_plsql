@@ -74,7 +74,7 @@ begin
         return str;
       end if;
     end if;
-    str := str || c;
+    str := concat(str, c);
     I_pos := I_pos + 1;
   end loop;
   I_err_msg := fmt_err(3, 'String', '''' || I_term || ''' character');
@@ -228,7 +228,7 @@ begin
         while I_pos<=len loop
           c := substr(I_text,I_pos,1);
           exit when c in (',',']','/',' ',chr(9),chr(10));
-          str := str || c;
+          str := concat(str, c);
           I_pos := I_pos + 1;
         end loop;
         res_rec.value := str;
@@ -276,10 +276,12 @@ begin
              else -- RIGHT_PART then
                -- recursive call of this program
                parse_obj(I_text, I_pos, I_res, I_res_idx, I_err_msg,
-                         case when I_prefix is not NULL
-                              then I_prefix || '.'
-                              else NULL
-                         end || res_rec.name
+                         concat( case when I_prefix is not NULL
+                                      then concat(I_prefix, '.')
+                                      else NULL
+                                 end
+                               , res_rec.name
+                               )
                         );
                if I_err_msg is not NULL then
                  exit;
@@ -302,10 +304,12 @@ begin
               if res_rec.name is not NULL then
                 -- array
                 parse_array(I_text, I_pos, I_res, I_res_idx, I_err_msg,
-                            case when I_prefix is not NULL
-                                 then I_prefix || '.'
-                                 else NULL
-                            end || res_rec.name
+                            concat( case when I_prefix is not NULL
+                                         then concat(I_prefix, '.')
+                                         else NULL
+                                    end
+                                  , res_rec.name
+                                  )
                            );
                 if I_err_msg is not NULL then
                   exit;
@@ -512,7 +516,7 @@ begin
           else -- RIGHT_PART
             exit when c in (',','/','}',' ',chr(9),chr(10));
           end if;
-          str := str || c;
+          str := concat(str, c);
           I_pos := I_pos + 1;
         end loop;
         if L_part = LEFT_PART then
